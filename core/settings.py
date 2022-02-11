@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'apps.image',
     'rest_framework',
     'apps.config.AppsConfig',
-
+    'android.authentications',
 ]
 
 MIDDLEWARE = [

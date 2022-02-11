@@ -424,7 +424,7 @@ demo = {
 
 
     var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    var chart_data = [150, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 30];
+    var chart_data = monthly_chart;
 
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
@@ -518,11 +518,11 @@ demo = {
   },
 
   initGoogleMaps: function() {
-    var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+    var myLatlng = new google.maps.LatLng(37.4946082, 127.0254251);
     var mapOptions = {
-      zoom: 13,
+      zoom: 10,
       center: myLatlng,
-      scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+      scrollwheel: true, //we disable de scroll over the map, it is a really annoing when you scroll through page
       styles: [{
           "elementType": "geometry",
           "stylers": [{
