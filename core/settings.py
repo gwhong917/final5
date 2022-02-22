@@ -39,7 +39,23 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.config.AppsConfig',
     'android.authentications',
+    'storages',
+
 ]
+##############################################################################
+AWS_ACCESS_KEY_ID = 'AKIASYDPHV6BVKQ7TWFV' # .csv 파일에 있는 내용을 입력 Access key ID
+AWS_SECRET_ACCESS_KEY = 'Xhit4Ej3Bu4QOABET+jdm9zmjkv/YR6EyKdMujWQ' # .csv 파일에 있는 내용을 입력 Secret access key
+AWS_REGION = 'ap-northeast-2c'
+
+###S3 Storages
+AWS_STORAGE_BUCKET_NAME = 'car-num' # 설정한 버킷 이름
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME, AWS_REGION)
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'path/to/store/my/files/')
+############################################################################
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,8 +150,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (

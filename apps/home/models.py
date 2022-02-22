@@ -1,9 +1,11 @@
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 
 
 class Post(models.Model):
-    user = models.CharField(db_column='user', max_length=50)
+    
+    user = models.IntegerField(db_column='user')
     lat = models.FloatField(db_column='lat', max_length=50)
     lng = models.FloatField(db_column='lng', max_length=50)
     time = models.DateTimeField(db_column='time')
@@ -22,3 +24,15 @@ class Post(models.Model):
 
 
 
+class Result(models.Model):
+
+    recepts_num = models.IntegerField(db_column='recept_num')
+    judge = models.IntegerField(db_column='judge')
+    car_num = models.FloatField(db_column='car_num')
+    
+    class Meta:
+        db_table = 'result'
+        managed = False
+
+    def __str__(self):
+        return "제목 : "  + self.name + ", 유형 : " + self.type

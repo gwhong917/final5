@@ -358,7 +358,7 @@ demo = {
     gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
 
     var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: ['7-1', '7-2', '7-3', '7-4', '8-1', '8-2'],
       datasets: [{
         label: "Data",
         fill: true,
@@ -394,7 +394,7 @@ demo = {
     gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
 
     var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
+      labels: ['22.07.17', '22.07.18', '22.07.19', '22.07.20', '22.07.21'],
       datasets: [{
         label: "My First dataset",
         fill: true,
@@ -425,6 +425,8 @@ demo = {
 
     var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     var chart_data = monthly_chart;
+    var chart_data2 = monthly_illegal;
+    var chart_data3 = monthly_legal;
 
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
@@ -467,17 +469,17 @@ demo = {
       myChartData.update();
     });
     $("#1").click(function() {
-      var chart_data = [10, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 10];
+      
       var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
+      data.datasets[0].data = chart_data2;
       data.labels = chart_labels;
       myChartData.update();
     });
 
     $("#2").click(function() {
-      var chart_data = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 180];
+      
       var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
+      data.datasets[0].data = chart_data3;
       data.labels = chart_labels;
       myChartData.update();
     });
@@ -499,7 +501,7 @@ demo = {
         display: false
       },
       data: {
-        labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+        labels: ['21-1', '21-2', '21-3', '21-4', '22-1', '22-2'],
         datasets: [{
           label: "Countries",
           fill: true,
@@ -509,7 +511,7 @@ demo = {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [53, 20, 10, 80, 100, 45],
+          data: [53, 39, 57, 80, 67, 35],
         }]
       },
       options: gradientBarChartConfiguration
@@ -712,16 +714,33 @@ demo = {
       ]
     };
 
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      title: "Hello World!"
+    const infoWindow = new google.maps.InfoWindow({
+      content: "",
+      disableAutoPan:true,
     });
 
-    // To add the marker to the map, call setMap();
-    marker.setMap(map);
+    var map = new google.maps.Map(document.getElementById("map_demo"), mapOptions);
+    const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    const markers = locations.map((position, i) => {
+      const label = labels[i % labels.length];
+      const marker = new google.maps.Marker({
+        position, label
+      });
+
+      marker.addListener("click", () => {
+        infowindow.setContent(label);
+        infowindow.open(map, marker);
+      });
+      return marker;
+    });
+
+    new MarkerClusterer({markers, map});
+
+ 
   },
+
+
 
   showNotification: function(from, align) {
     color = Math.floor((Math.random() * 4) + 1);

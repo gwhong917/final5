@@ -15,11 +15,11 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table tablesorter " id="">
+          <table class="table table-striped " id="datatablesSimple">
             <thead class=" text-primary">
               <tr>
                 <th class="text-center">
-                  신고자 ID
+                  접수 번호
                 </th>
                 <th class="text-center">
                   위도
@@ -51,7 +51,7 @@
                   {{I.time}}
                 </td>
                 <td class="text-center">
-                  <img src="../../../core/media/{{I.model_pic}}">{{I.model_pic}}
+                  {{I.model_pic}}
                 </td>
               </tr>
             {% endfor %}
