@@ -27,6 +27,14 @@ from django.shortcuts import render
 
 
 @login_required(login_url="/login/")
+def gallery(request):
+    gal = Post.objects.all()
+    context = {'gal': gal}
+
+    return render(request, "home/ui-icons.html", context)
+
+
+@login_required(login_url="/login/")
 def ui_tables(request):
     table_log = Post.objects.all()
     context = {'table_log': table_log}

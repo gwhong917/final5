@@ -11,17 +11,23 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="title">100 Awesome Nucleo Icons</h5>
-        <p class="category">Handcrafted by our friends from <a href="https://nucleoapp.com/?ref=1712">NucleoApp</a></p>
+        <h5 class="title">Gallery</h5>
+        <p class="category">labeled photo of report</p>
       </div>
       <div class="card-body all-icons">
         <div class="row">
+          
+          {% for I in gal %}
           <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
             <div class="font-icon-detail">
-              <i class="tim-icons icon-alert-circle-exc"></i>
-              <p>icon-alert-circle-exc</p>
+              <img src="https://chc-redzone.s3.ap-northeast-2.amazonaws.com/{{ I.model_pic }}" />
+              <p>icon-align-center</p>
             </div>
           </div>
+          {% endfor %}
+
+
+          <!--
           <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
             <div class="font-icon-detail">
               <i class="tim-icons icon-align-center"></i>
@@ -616,6 +622,8 @@
               <p>icon-simple-delete</p>
             </div>
           </div>
+          -->
+
         </div>
       </div>
     </div>

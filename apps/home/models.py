@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     
-    user = models.IntegerField(db_column='user')
+    user = models.IntegerField(db_column='userid')
     lat = models.FloatField(db_column='lat', max_length=50)
     lng = models.FloatField(db_column='lng', max_length=50)
     time = models.DateTimeField(db_column='time')
@@ -16,12 +16,8 @@ class Post(models.Model):
     #age = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        db_table = 'image_post'
+        db_table = 'image_picpost'
         managed = False
-
-    def __str__(self):
-        return "제목 : " + self.name + ", 유형 : " + self.type
-
 
 
 class Result(models.Model):
@@ -34,5 +30,3 @@ class Result(models.Model):
         db_table = 'result'
         managed = False
 
-    def __str__(self):
-        return "제목 : "  + self.name + ", 유형 : " + self.type

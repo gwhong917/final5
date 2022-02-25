@@ -11,6 +11,7 @@ urlpatterns = [
     # The home page
     path('', views.index, name='home'),
 
+    path('gallery', views.gallery),
     path('ui-tables', views.ui_tables),
     # path('ui-maps', views.ui_maps),
 

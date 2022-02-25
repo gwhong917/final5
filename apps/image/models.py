@@ -8,4 +8,5 @@ class Post(models.Model):
      lat = models.FloatField(blank=True, null=True)
      lng = models.FloatField(blank=True, null=True)
      time = models.DateTimeField(auto_now_add=True)
-     
+
+

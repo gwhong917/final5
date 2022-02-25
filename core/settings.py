@@ -9,6 +9,7 @@ from unipath import Path
 import pymysql
 pymysql.install_as_MySQLdb()
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).parent
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -48,7 +49,7 @@ AWS_SECRET_ACCESS_KEY = 'Xhit4Ej3Bu4QOABET+jdm9zmjkv/YR6EyKdMujWQ' # .csv 파일
 AWS_REGION = 'ap-northeast-2c'
 
 ###S3 Storages
-AWS_STORAGE_BUCKET_NAME = 'car-num' # 설정한 버킷 이름
+AWS_STORAGE_BUCKET_NAME = 'car-num'# 설정한 버킷 이름
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME, AWS_REGION)
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
@@ -148,7 +149,7 @@ USE_TZ = False
 STATIC_ROOT = os.path.join(CORE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
